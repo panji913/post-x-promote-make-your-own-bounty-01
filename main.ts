@@ -73,6 +73,16 @@ check(
   `length=${POST_TEXT.length} max=${MAX_POST_LENGTH}`,
 );
 check('text-three-lines', lines.length === 3, `lines=${lines.length}`);
+check(
+  'text-line1-bounty',
+  lines[0].toLowerCase().includes('bounty'),
+  `line1=${JSON.stringify(lines[0])}`,
+);
+check(
+  'text-line2-sponsor-link',
+  lines[1].includes('https://make.fun/sponsor/new'),
+  `line2=${JSON.stringify(lines[1])}`,
+);
 
 if (failures.length > 0) {
   console.log(`VALIDATION: FAIL (${passes.length} passed, ${failures.length} failed)`);
